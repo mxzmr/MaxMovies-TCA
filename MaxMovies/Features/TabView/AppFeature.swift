@@ -13,11 +13,13 @@ struct AppFeature {
     struct State: Equatable {
         var movies = MoviesFeature.State()
         var tvShows = TvShowsFeature.State()
+        var home = HomeFeature.State()
     }
     
     enum Action {
         case movies(MoviesFeature.Action)
         case tvShows(TvShowsFeature.Action)
+        case home(HomeFeature.Action)
     }
     
     var body: some ReducerOf<Self> {
@@ -26,6 +28,9 @@ struct AppFeature {
         }
         Scope(state: \.tvShows, action: \.tvShows) {
             TvShowsFeature()
+        }
+        Scope(state: \.home, action: \.home) {
+            HomeFeature()
         }
         
         Reduce { state, action in

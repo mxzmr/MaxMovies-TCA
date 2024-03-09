@@ -23,6 +23,9 @@
 		C4C630A72B9C5767006EBA56 /* TvShowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630A62B9C5767006EBA56 /* TvShowsView.swift */; };
 		C4C630A92B9C5797006EBA56 /* TvShowsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630A82B9C5797006EBA56 /* TvShowsFeature.swift */; };
 		C4C630AB2B9C5BB5006EBA56 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4C630AA2B9C5BB5006EBA56 /* Config.plist */; };
+		C4C630AF2B9C6AE2006EBA56 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630AE2B9C6AE2006EBA56 /* HomeView.swift */; };
+		C4C630B32B9C7415006EBA56 /* MediaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630B22B9C7415006EBA56 /* MediaModel.swift */; };
+		C4C630B72B9C979A006EBA56 /* HomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630B62B9C979A006EBA56 /* HomeFeature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		C4C630A62B9C5767006EBA56 /* TvShowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowsView.swift; sourceTree = "<group>"; };
 		C4C630A82B9C5797006EBA56 /* TvShowsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowsFeature.swift; sourceTree = "<group>"; };
 		C4C630AA2B9C5BB5006EBA56 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		C4C630AE2B9C6AE2006EBA56 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		C4C630B22B9C7415006EBA56 /* MediaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaModel.swift; sourceTree = "<group>"; };
+		C4C630B62B9C979A006EBA56 /* HomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,7 @@
 		C4C630972B9C40BB006EBA56 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C4C630B22B9C7415006EBA56 /* MediaModel.swift */,
 				C4C630932B9C3DE3006EBA56 /* MoviesModel.swift */,
 				C4C630952B9C3DF9006EBA56 /* TvShowsModel.swift */,
 			);
@@ -118,8 +125,9 @@
 			children = (
 				C4C630A32B9C4B89006EBA56 /* TabView */,
 				C4C6309F2B9C49F8006EBA56 /* Movies */,
-				C4C630A62B9C5767006EBA56 /* TvShowsView.swift */,
-				C4C630A82B9C5797006EBA56 /* TvShowsFeature.swift */,
+				C4C630AD2B9C5E0C006EBA56 /* TvShows */,
+				C4C630AE2B9C6AE2006EBA56 /* HomeView.swift */,
+				C4C630B62B9C979A006EBA56 /* HomeFeature.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -148,6 +156,15 @@
 				C4C630A42B9C4BA4006EBA56 /* AppFeature.swift */,
 			);
 			path = TabView;
+			sourceTree = "<group>";
+		};
+		C4C630AD2B9C5E0C006EBA56 /* TvShows */ = {
+			isa = PBXGroup;
+			children = (
+				C4C630A62B9C5767006EBA56 /* TvShowsView.swift */,
+				C4C630A82B9C5797006EBA56 /* TvShowsFeature.swift */,
+			);
+			path = TvShows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,13 +246,16 @@
 			files = (
 				C4C6309B2B9C4111006EBA56 /* MoviesView.swift in Sources */,
 				C4C630A92B9C5797006EBA56 /* TvShowsFeature.swift in Sources */,
+				C4C630AF2B9C6AE2006EBA56 /* HomeView.swift in Sources */,
 				C4C6308B2B9C33ED006EBA56 /* ServiceEndpoints.swift in Sources */,
 				C4C630962B9C3DF9006EBA56 /* TvShowsModel.swift in Sources */,
 				C4C630942B9C3DE3006EBA56 /* MoviesModel.swift in Sources */,
+				C4C630B72B9C979A006EBA56 /* HomeFeature.swift in Sources */,
 				C4C630992B9C40CD006EBA56 /* AppTabView.swift in Sources */,
 				C4C6309D2B9C490C006EBA56 /* PosterTileView.swift in Sources */,
 				C4C630A52B9C4BA4006EBA56 /* AppFeature.swift in Sources */,
 				C4C6308D2B9C342F006EBA56 /* NetworkService.swift in Sources */,
+				C4C630B32B9C7415006EBA56 /* MediaModel.swift in Sources */,
 				C4C630A12B9C4A2A006EBA56 /* MoviesFeature.swift in Sources */,
 				C4C630A72B9C5767006EBA56 /* TvShowsView.swift in Sources */,
 				C4C6307A2B9C31ED006EBA56 /* MaxMoviesApp.swift in Sources */,

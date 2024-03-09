@@ -13,9 +13,11 @@ struct PosterTileView: View {
     var body: some View {
         if let posterPath {
             AsyncImage(url: URL(string: "https://image.tmdb.org/t/p/w200/\(posterPath)")) { Image in
-                Image.scaledToFit()
+                Image
+                    .resizable()
+                    .scaledToFit()
             } placeholder: {
-                RoundedRectangle(cornerRadius: 25.0)
+                Rectangle()
                     .foregroundColor(.gray)
                     .frame(width: 200, height: 300)
                     .shadow(radius: 4)

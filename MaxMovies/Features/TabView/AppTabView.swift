@@ -13,6 +13,11 @@ struct AppTabView: View {
     
     var body: some View {
         TabView {
+            HomeView(store: store.scope(state: \.home, action: \.home))
+                .tabItem {
+                    Text("Home")
+                }
+            
             MoviesView(store: store.scope(state: \.movies, action: \.movies))
                 .tabItem {
                     Text("Movies")

@@ -23,6 +23,7 @@ enum TmdbUrl {
     case trendingTvShows
     case searchTvShows
     case searchMulti
+    case trendingMulti
     case backDrop(backdropPath: String)
     
     var urlString: String {
@@ -59,6 +60,8 @@ enum TmdbUrl {
             return "/3/search/multi"
         case .backDrop(backdropPath: let backdropPath):
             return "https://image.tmdb.org/t/p/w400/\(backdropPath)"
+        case .trendingMulti:
+            return "/3/trending/all/day"
         }
     }
     

@@ -37,6 +37,7 @@ struct Movie: Codable, Identifiable, Equatable, MediaDetails {
     let title: String
     let voteAverage: Double
     let voteCount: Int
+    let mediaType: String?
     var uid = UUID()
     
     enum CodingKeys: String, CodingKey {
@@ -49,6 +50,7 @@ struct Movie: Codable, Identifiable, Equatable, MediaDetails {
         case title = "title"
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+        case mediaType = "media_type"
     }
 }
 

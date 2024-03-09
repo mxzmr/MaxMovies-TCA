@@ -47,6 +47,7 @@ struct TvShow: Codable, Identifiable, Equatable, MediaDetails {
     let popularity: Double
     let posterPath: String?
     let voteAverage: Double
+    let mediaType: String?
     let voteCount: Int
     
     enum CodingKeys: String, CodingKey {
@@ -61,6 +62,7 @@ struct TvShow: Codable, Identifiable, Equatable, MediaDetails {
         case posterPath = "poster_path"
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+        case mediaType = "media_type"
     }
 }
 

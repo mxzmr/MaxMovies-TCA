@@ -11,6 +11,7 @@ protocol NetworkService {
     func fetch<T: Codable> ( url: URL?, headers: [String: String]?) async throws -> T
 }
 
+
 struct NetworkClient: NetworkService {
     
     func fetch<T: Codable>(url: URL?, headers: [String: String]? = nil) async throws -> T {

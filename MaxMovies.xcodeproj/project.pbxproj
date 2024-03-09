@@ -14,6 +14,8 @@
 		C4C630892B9C32C4006EBA56 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = C4C630882B9C32C4006EBA56 /* ComposableArchitecture */; };
 		C4C6308B2B9C33ED006EBA56 /* ServiceEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6308A2B9C33ED006EBA56 /* ServiceEndpoints.swift */; };
 		C4C6308D2B9C342F006EBA56 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C6308C2B9C342F006EBA56 /* NetworkService.swift */; };
+		C4C630942B9C3DE3006EBA56 /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630932B9C3DE3006EBA56 /* MoviesModel.swift */; };
+		C4C630962B9C3DF9006EBA56 /* TvShowsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630952B9C3DF9006EBA56 /* TvShowsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		C4C630802B9C31EF006EBA56 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C4C6308A2B9C33ED006EBA56 /* ServiceEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceEndpoints.swift; sourceTree = "<group>"; };
 		C4C6308C2B9C342F006EBA56 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		C4C630932B9C3DE3006EBA56 /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
+		C4C630952B9C3DF9006EBA56 /* TvShowsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShowsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +63,7 @@
 			children = (
 				C4C630792B9C31ED006EBA56 /* MaxMoviesApp.swift */,
 				C4C6307B2B9C31ED006EBA56 /* ContentView.swift */,
-				C4C6308A2B9C33ED006EBA56 /* ServiceEndpoints.swift */,
-				C4C6308C2B9C342F006EBA56 /* NetworkService.swift */,
+				C4C6308E2B9C3C74006EBA56 /* Service */,
 				C4C6307D2B9C31EF006EBA56 /* Assets.xcassets */,
 				C4C6307F2B9C31EF006EBA56 /* Preview Content */,
 			);
@@ -73,6 +76,17 @@
 				C4C630802B9C31EF006EBA56 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C4C6308E2B9C3C74006EBA56 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C4C6308A2B9C33ED006EBA56 /* ServiceEndpoints.swift */,
+				C4C630932B9C3DE3006EBA56 /* MoviesModel.swift */,
+				C4C630952B9C3DF9006EBA56 /* TvShowsModel.swift */,
+				C4C6308C2B9C342F006EBA56 /* NetworkService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +167,8 @@
 			files = (
 				C4C6307C2B9C31ED006EBA56 /* ContentView.swift in Sources */,
 				C4C6308B2B9C33ED006EBA56 /* ServiceEndpoints.swift in Sources */,
+				C4C630962B9C3DF9006EBA56 /* TvShowsModel.swift in Sources */,
+				C4C630942B9C3DE3006EBA56 /* MoviesModel.swift in Sources */,
 				C4C6308D2B9C342F006EBA56 /* NetworkService.swift in Sources */,
 				C4C6307A2B9C31ED006EBA56 /* MaxMoviesApp.swift in Sources */,
 			);

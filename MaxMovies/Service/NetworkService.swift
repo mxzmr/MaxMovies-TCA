@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ComposableArchitecture
 
 protocol NetworkService {
     func fetch<T: Codable> ( url: URL?, headers: [String: String]?) async throws -> T
@@ -39,4 +40,15 @@ enum NetworkError: Error {
     case requestFailed(Error)
     case invalidResponse
     case statusCodeError(Int)
+}
+
+private enum NetworkServiceKey: DependencyKey {
+    static let liveValue: NetworkService = NetworkClient()
+}
+
+extension DependencyValues {
+  var networkService: NetworkService {
+    get { self[NetworkServiceKey.self] }
+    set { self[NetworkServiceKey.self] = newValue }
+  }
 }

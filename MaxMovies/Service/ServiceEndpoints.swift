@@ -89,6 +89,7 @@ enum MovieCategory: String, CaseIterable {
     case popular = "Popular"
     case topRated = "Top Rated"
     case nowPlaying = "Now playing"
+    case upcoming = "Upcoming"
     
     var urlString: String {
         switch self {
@@ -98,6 +99,8 @@ enum MovieCategory: String, CaseIterable {
             return "top_rated"
         case .nowPlaying:
             return "now_playing"
+        case .upcoming:
+            return "upcoming"
         }
     }
 }

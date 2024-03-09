@@ -1,26 +1,27 @@
 //
-//  MoviesFeature.swift
+//  TvShowsFeature.swift
 //  MaxMovies
 //
 //  Created by Max zam on 09/03/2024.
 //
+
 import SwiftUI
 import ComposableArchitecture
 
 @Reducer
-struct MoviesFeature {
+struct TvShowsFeature {
     @Dependency(\.networkService) var networkService
     
     @ObservableState
     struct State: Equatable {
         var isLoading: Bool = false
-        var sortedCategory: MovieCategory = .popular
-        var moviesResponse: MovieResponse = MovieResponse(page: 1, results: [], totalPages: 1)
+        var sortedCategory: TvShowCategory = .onTheAir
+        var tvShowsResponse: TvShowsResponse = TvShowsResponse(page: 1, results: [], totalPages: 1)
     }
     
     enum Action {
-        case apiCall(MovieCategory)
-        case apiResponse(Result<MovieResponse, Error>)
+        case apiCall(TvShowCategory)
+        case apiResponse(Result<TvShowsResponse, Error>)
     }
     
     var body: some ReducerOf<Self> {
@@ -31,21 +32,23 @@ struct MoviesFeature {
                 state.isLoading = true
                 state.sortedCategory = category
                 return .run { send in
-                    let url = TmdbUrl.movie(category: category).getUrl(
+                    let url = TmdbUrl.tvShow(category: category).getUrl(
                         queryItems: [URLQueryItem(name: "page", value: "\(1)")])
                     do {
-                        let movieResponse: MovieResponse = try await networkService.fetch(url: url, headers: TmdbUrl.headers)
-                        await send(.apiResponse(.success(movieResponse)))
+                        let tvShowsResponse: TvShowsResponse = try await networkService.fetch(url: url, headers: TmdbUrl.headers)
+                        await send(.apiResponse(.success(tvShowsResponse)))
                     } catch {
                         await send(.apiResponse(.failure(error)))
                     }
                 }
             case .apiResponse(let result):
                 switch result {
-                case .success(let moviesResponse):
-                    state.moviesResponse = moviesResponse
+                case .success(let tvShowsResponse):
+                    state.tvShowsResponse = tvShowsResponse
                 case .failure(let error):
-                    print("error fetching movies: \(error)")
+                    //Show empty state if there is an error
+                    state.tvShowsResponse.results = []
+                    print("error fetching tv shows: \(error)")
                 }
                 state.isLoading = false
                 return .none
@@ -53,4 +56,3 @@ struct MoviesFeature {
         }
     }
 }
-

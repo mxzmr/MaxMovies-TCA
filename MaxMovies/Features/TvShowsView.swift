@@ -1,5 +1,5 @@
 //
-//  MoviesView.swift
+//  TvShowsView.swift
 //  MaxMovies
 //
 //  Created by Max zam on 09/03/2024.
@@ -8,8 +8,8 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct MoviesView: View {
-    let store: StoreOf<MoviesFeature>
+struct TvShowsView: View {
+    let store: StoreOf<TvShowsFeature>
     let columnGrid = [GridItem(.flexible()),GridItem(.flexible())]
     
     var body: some View {
@@ -19,13 +19,12 @@ struct MoviesView: View {
                     VStack {
                         ProgressView()
                     }
-                } else if store.moviesResponse.results.isEmpty {
-                    Text("No movies found")
+                } else if store.tvShowsResponse.results.isEmpty {
+                    Text("No tv shows found")
                 } else {
                     LazyVGrid(columns: columnGrid, spacing: 5) {
-                        ForEach(store.moviesResponse.results) { movie in
-                            PosterTileView(posterPath: movie.posterPath)
-                                .accessibilityLabel("Movie Poster: \(movie.title )")
+                        ForEach(store.tvShowsResponse.results) { show in
+                            PosterTileView(posterPath: show.posterPath)
                         }
                     }
                 }
@@ -33,7 +32,7 @@ struct MoviesView: View {
             .toolbar {
                 ToolbarItem(placement:.automatic) {
                     Menu("Sort By") {
-                        ForEach(MovieCategory.allCases, id: \.self) { category in
+                        ForEach(TvShowCategory.allCases, id: \.self) { category in
                             Button {
                                 store.send(.apiCall(category))
                             } label: {
@@ -44,8 +43,8 @@ struct MoviesView: View {
                 }
             }
             .onAppear {
-                if store.moviesResponse.results.isEmpty {
-                    store.send(.apiCall(.popular))
+                if store.tvShowsResponse.results.isEmpty {
+                    store.send(.apiCall(.onTheAir))
                 }
             }
             .navigationTitle(store.sortedCategory.rawValue)
@@ -54,8 +53,7 @@ struct MoviesView: View {
 }
 
 #Preview {
-    MoviesView(store: Store(initialState: MoviesFeature.State(), reducer: {
-        MoviesFeature()
+    TvShowsView(store: Store(initialState: TvShowsFeature.State(), reducer: {
+        TvShowsFeature()
     }))
 }
-

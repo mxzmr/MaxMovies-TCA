@@ -17,6 +17,11 @@ struct AppTabView: View {
                 .tabItem {
                     Text("Movies")
                 }
+            TvShowsView(store: store.scope(state: \.tvShows, action: \.tvShows))
+                .tabItem {
+                    Text("Tv Shows")
+                }
+            
         }
     }
 }

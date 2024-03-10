@@ -107,7 +107,6 @@ struct HomeFeature {
                 return .none
                 
             case let .requestMoreData(endpoint, currentPage, searchTerm):
-                print("requesting more data")
                 let nextPage = currentPage + 1
                 let url = endpoint.url.getUrl(queryItems: [URLQueryItem(name: "page", value: "\(nextPage)"), URLQueryItem(name: searchTerm != nil ? "query" : "", value: searchTerm ?? "")])
                 

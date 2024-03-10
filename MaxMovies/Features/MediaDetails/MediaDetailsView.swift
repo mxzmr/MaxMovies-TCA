@@ -140,25 +140,6 @@ struct MediaDetailsView: View {
     }))
 }
 
-
-struct RatingView: View {
-    @Binding var rating: Double
-    
-    var body: some View {
-        HStack {
-            Picker("picker", selection: $rating) {
-                ForEach(1..<11) { index in
-                    Label(String(index), systemImage: index <= Int(rating) ? "star.fill" : "star")
-                        .onTapGesture {
-                            rating = Double(index)
-                        }
-                }
-            }
-        }
-    }
-}
-
-
 struct VotesAverageAndOnlineReviewsView: View {
     let votesAverage: Double
     let votesCount: Int

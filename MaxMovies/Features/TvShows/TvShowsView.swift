@@ -28,6 +28,11 @@ struct TvShowsView: View {
                                 .onTapGesture {
                                     store.send(.showDetails(show))
                                 }
+                                .onAppear {
+                                    if let lastTvShow = store.tvShowsResponse.results.last, lastTvShow == show {
+                                        store.send(.requestMoreTvShows(store.sortedCategory))
+                                    }
+                                }
                         }
                     }
                 }

@@ -28,6 +28,11 @@ struct MoviesView: View {
                                 .onTapGesture {
                                     store.send(.showDetails(movie))
                                 }
+                                .onAppear {
+                                    if let lastMovie = store.moviesResponse.results.last, lastMovie == movie {
+                                        store.send(.requestMoreMovies(store.sortedCategory))
+                                    }
+                                }
                         }
                     }
                 }

@@ -58,6 +58,7 @@ struct MediaDetailsFeature {
                     print("Error fetching reivews: \(error)")
                 }
                 return .none
+                
             case .trailersApiCall(let mediaItem):
                 return .run { send in
                     // Check if its a movie or tv show, only tv shows have first air date
@@ -71,6 +72,7 @@ struct MediaDetailsFeature {
                         await send(.apitrailersResponse(.failure(error)))
                     }
                 }
+                
             case .apitrailersResponse(let result):
                 switch result {
                 case .success(let trailers):
@@ -79,9 +81,11 @@ struct MediaDetailsFeature {
                     print("Error fetching trailers: \(error)")
                 }
                 return .none
+                
             case .delegate(.save(_)), .delegate(.remove(_)):
                 state.isFavorite.toggle()
                 return .none
+                
             case .delegate(_):
                 return .none
             }

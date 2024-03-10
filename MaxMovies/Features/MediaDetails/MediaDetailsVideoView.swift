@@ -40,7 +40,7 @@ struct MediaDetailsVideosView: View {
                     }
                 } label: {
                     YoutubeThumbnailView(video: video)
-                }  
+                }
             }
         }
         .onDisappear {

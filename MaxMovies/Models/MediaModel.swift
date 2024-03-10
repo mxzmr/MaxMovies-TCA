@@ -9,7 +9,7 @@ import Foundation
 
 struct MediaResponse: Codable, Equatable {
     
-    let page: Int
+    var page: Int
     var results: [MediaItem]
     let totalPages: Int
     let totalResults: Int

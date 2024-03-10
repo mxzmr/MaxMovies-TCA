@@ -27,21 +27,24 @@ struct HomeView: View {
             .background(RoundedRectangle(cornerRadius: 25).fill(.ultraThinMaterial))
             ScrollView {
                 if !store.searchTerm.isEmpty {
-                    ScrollView {
-                        if store.isLoading {
-                            VStack {
-                                ProgressView()
-                            }
-                        } else if store.searchResponse.results.isEmpty {
-                            Text("No results found, please try a different search.")
-                        } else {
-                            LazyVGrid(columns: columnGrid, spacing: 5) {
-                                ForEach(store.searchResponse.results) { media in
-                                    PosterTileView(posterPath: media.posterPath)
-                                        .onTapGesture {
-                                            store.send(.showDetails(media))
+                    if store.isLoading {
+                        VStack {
+                            ProgressView()
+                        }
+                    } else if store.searchResponse.results.isEmpty {
+                        Text("No results found, please try a different search.")
+                    } else {
+                        LazyVGrid(columns: columnGrid, spacing: 5) {
+                            ForEach(store.searchResponse.results) { media in
+                                PosterTileView(posterPath: media.posterPath)
+                                    .onTapGesture {
+                                        store.send(.showDetails(media))
+                                    }
+                                    .onAppear {
+                                        if let lastMediaItem = store.searchResponse.results.last, lastMediaItem == media {
+                                            store.send(.requestMoreData(.search, currentPage: store.searchCurrentPage, searchTerm: store.searchTerm))
                                         }
-                                }
+                                    }
                             }
                         }
                     }
@@ -54,6 +57,11 @@ struct HomeView: View {
                                         PosterTileView(posterPath: media.posterPath)
                                             .onTapGesture {
                                                 store.send(.showDetails(media))
+                                            }
+                                            .onAppear {
+                                                if let lastMediaItem = store.trendingMediaResponse.results.last, lastMediaItem == media {
+                                                    store.send(.requestMoreData(.trending, currentPage: store.trendingMediaCurrentPage))
+                                                }
                                             }
                                     }
                                 }
@@ -73,6 +81,11 @@ struct HomeView: View {
                                         PosterTileView(posterPath: media.posterPath)
                                             .onTapGesture {
                                                 store.send(.showDetails(media))
+                                            }
+                                            .onAppear {
+                                                if let lastMediaItem = store.popularMediaResponse.results.last, lastMediaItem == media {
+                                                    store.send(.requestMoreDataForPopular)
+                                                }
                                             }
                                     }
                                 }

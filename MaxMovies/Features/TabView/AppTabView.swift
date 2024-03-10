@@ -43,9 +43,6 @@ struct AppTabView: View {
                         Text("Favorites")
                     }
                 }
-            
-            
-            
         }
         .onAppear {
             store.send(.loadFavorites)

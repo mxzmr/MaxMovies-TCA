@@ -47,7 +47,7 @@ struct MediaDetailsView: View {
                                             .font(.caption)
                                     }
                                 } else {
-                                    ColorChangingPlaceholderView(maxHeight: 400, aspectRatio: .fit)
+                                    ColorChangingPlaceholderView(width: 300, height: 400, aspectRatio: .fit)
                                 }
                             }
                         }

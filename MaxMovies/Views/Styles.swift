@@ -30,7 +30,8 @@ struct AppButtonStyle: ViewModifier {
 
 struct ColorChangingPlaceholderView: View {
     @State private var isHighlighted = false
-    let maxHeight: CGFloat
+    let width: CGFloat
+    let height: CGFloat
     let aspectRatio: ContentMode
     var animation: Animation {
         Animation.linear(duration: 0.5).repeatForever(autoreverses: true)
@@ -39,7 +40,7 @@ struct ColorChangingPlaceholderView: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
             .fill(Color.black.opacity(isHighlighted ? 0.3 : 0.1))
-            .frame(maxHeight: maxHeight)
+            .frame(width: width, height: height)
             .aspectRatio(contentMode: aspectRatio)
             .onAppear {
                 withAnimation(animation) {

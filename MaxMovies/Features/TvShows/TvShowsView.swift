@@ -25,6 +25,9 @@ struct TvShowsView: View {
                     LazyVGrid(columns: columnGrid, spacing: 5) {
                         ForEach(store.tvShowsResponse.results) { show in
                             PosterTileView(posterPath: show.posterPath)
+                                .onTapGesture {
+                                    store.send(.showDetails(show))
+                                }
                         }
                     }
                 }

@@ -25,7 +25,9 @@ struct MoviesView: View {
                     LazyVGrid(columns: columnGrid, spacing: 5) {
                         ForEach(store.moviesResponse.results) { movie in
                             PosterTileView(posterPath: movie.posterPath)
-                                .accessibilityLabel("Movie Poster: \(movie.title )")
+                                .onTapGesture {
+                                    store.send(.showDetails(movie))
+                                }
                         }
                     }
                 }

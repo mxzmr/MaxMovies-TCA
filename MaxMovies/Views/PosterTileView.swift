@@ -17,10 +17,11 @@ struct PosterTileView: View {
                     .resizable()
                     .scaledToFit()
             } placeholder: {
-                Rectangle()
-                    .foregroundColor(.gray)
-                    .frame(width: 200, height: 300)
-                    .shadow(radius: 4)
+                ColorChangingPlaceholderView(width: 200, height: 300, aspectRatio: .fit)
+//                Rectangle()
+//                    .foregroundColor(.gray)
+//                    .frame(width: 200, height: 300)
+//                    .shadow(radius: 4)
             }
         }
     }

@@ -38,7 +38,13 @@ struct AppFeature {
         
         Reduce { state, action in
             switch action {
+            case .movies(.showDetails(let media)):
+                state.mediaDetails = MediaDetailsFeature.State(media: media)
+                return .none
             case .movies(_):
+                return .none
+            case .tvShows(.showDetails(let media)):
+                state.mediaDetails = MediaDetailsFeature.State(media: media)
                 return .none
             case .tvShows(_):
                 return .none

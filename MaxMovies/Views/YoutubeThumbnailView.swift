@@ -37,7 +37,7 @@ struct YoutubeThumbnailView: View {
                                     .foregroundStyle(.primary)
                             }
                         } else {
-                            ColorChangingPlaceholderView(maxHeight: 100, aspectRatio: .fit)
+                            ColorChangingPlaceholderView(width: 150, height: 100, aspectRatio: .fit)
                         }
                     }
                     Image(systemName: "play")

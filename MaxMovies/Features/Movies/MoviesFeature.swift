@@ -15,12 +15,13 @@ struct MoviesFeature {
     struct State: Equatable {
         var isLoading: Bool = false
         var sortedCategory: MovieCategory = .popular
-        var moviesResponse: MovieResponse = MovieResponse(page: 1, results: [], totalPages: 1)
+        var moviesResponse: MediaResponse = MediaResponse(page: 1, results: [], totalPages: 1, totalResults: 1)
     }
     
     enum Action {
         case apiCall(MovieCategory)
-        case apiResponse(Result<MovieResponse, Error>)
+        case apiResponse(Result<MediaResponse, Error>)
+        case showDetails(MediaItem)
     }
     
     var body: some ReducerOf<Self> {
@@ -34,7 +35,7 @@ struct MoviesFeature {
                     let url = TmdbUrl.movie(category: category).getUrl(
                         queryItems: [URLQueryItem(name: "page", value: "\(1)")])
                     do {
-                        let movieResponse: MovieResponse = try await networkService.fetch(url: url, headers: TmdbUrl.headers)
+                        let movieResponse: MediaResponse = try await networkService.fetch(url: url, headers: TmdbUrl.headers)
                         await send(.apiResponse(.success(movieResponse)))
                     } catch {
                         await send(.apiResponse(.failure(error)))
@@ -48,6 +49,8 @@ struct MoviesFeature {
                     print("error fetching movies: \(error)")
                 }
                 state.isLoading = false
+                return .none
+            case .showDetails(_):
                 return .none
             }
         }

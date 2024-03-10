@@ -22,7 +22,7 @@ struct MediaDetailsVideosView: View {
                                 isLoading = false
                             })
                             if isLoading {
-                                ColorChangingPlaceholderView(maxHeight: 300, aspectRatio: .fill)
+                                ColorChangingPlaceholderView(width: 200, height: 300, aspectRatio: .fill)
                             }
                             
                         }

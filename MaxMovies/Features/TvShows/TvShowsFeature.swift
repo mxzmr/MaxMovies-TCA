@@ -16,12 +16,13 @@ struct TvShowsFeature {
     struct State: Equatable {
         var isLoading: Bool = false
         var sortedCategory: TvShowCategory = .onTheAir
-        var tvShowsResponse: TvShowsResponse = TvShowsResponse(page: 1, results: [], totalPages: 1)
+        var tvShowsResponse: MediaResponse = MediaResponse(page: 1, results: [], totalPages: 1, totalResults: 1)
     }
     
     enum Action {
         case apiCall(TvShowCategory)
-        case apiResponse(Result<TvShowsResponse, Error>)
+        case apiResponse(Result<MediaResponse, Error>)
+        case showDetails(MediaItem)
     }
     
     var body: some ReducerOf<Self> {
@@ -35,7 +36,7 @@ struct TvShowsFeature {
                     let url = TmdbUrl.tvShow(category: category).getUrl(
                         queryItems: [URLQueryItem(name: "page", value: "\(1)")])
                     do {
-                        let tvShowsResponse: TvShowsResponse = try await networkService.fetch(url: url, headers: TmdbUrl.headers)
+                        let tvShowsResponse: MediaResponse = try await networkService.fetch(url: url, headers: TmdbUrl.headers)
                         await send(.apiResponse(.success(tvShowsResponse)))
                     } catch {
                         await send(.apiResponse(.failure(error)))
@@ -51,6 +52,8 @@ struct TvShowsFeature {
                     print("error fetching tv shows: \(error)")
                 }
                 state.isLoading = false
+                return .none
+            case .showDetails(_):
                 return .none
             }
         }

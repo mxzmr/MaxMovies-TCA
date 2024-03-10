@@ -22,7 +22,6 @@ struct MovieResponse: Codable, Equatable {
 
 struct Movie: Codable, Identifiable, Equatable, MediaDetails {
     
-    // Computed property to make it conform to MediaDetails protocol
     var releaseDate: String? {
         return originalReleaseDate
     }

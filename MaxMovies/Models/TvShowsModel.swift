@@ -21,7 +21,6 @@ struct TvShowsResponse: Codable, Equatable {
 
 struct TvShow: Codable, Identifiable, Equatable, MediaDetails {
     
-    // Computed property to make it conform to MediaDetails protocol
     var title: String {
         return name
     }

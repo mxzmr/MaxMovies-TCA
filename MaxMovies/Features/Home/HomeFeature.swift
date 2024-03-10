@@ -27,6 +27,7 @@ struct HomeFeature {
         case newSearchTerm(String)
         case callMultipleApiCalls
         case resetTextfield
+        case showDetails(MediaItem)
     }
     
     var body: some ReducerOf<Self> {
@@ -83,6 +84,8 @@ struct HomeFeature {
                 )
             case .resetTextfield:
                 state.searchTerm = ""
+                return .none
+            case .showDetails(_):
                 return .none
             }
         }

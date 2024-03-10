@@ -37,6 +37,9 @@ struct HomeView: View {
                         LazyVGrid(columns: columnGrid, spacing: 5) {
                             ForEach(store.searchResponse.results) { media in
                                 PosterTileView(posterPath: media.posterPath)
+                                    .onTapGesture {
+                                        store.send(.showDetails(media))
+                                    }
                             }
                         }
                     }
@@ -48,6 +51,9 @@ struct HomeView: View {
                             LazyHStack {
                                 ForEach(store.trendingMediaResponse.results) { media in
                                     PosterTileView(posterPath: media.posterPath)
+                                        .onTapGesture {
+                                            store.send(.showDetails(media))
+                                        }
                                 }
                             }
                             .padding(.bottom)
@@ -64,6 +70,9 @@ struct HomeView: View {
                             LazyHStack {
                                 ForEach(store.popularMediaResponse.results) { media in
                                     PosterTileView(posterPath: media.posterPath)
+                                        .onTapGesture {
+                                            store.send(.showDetails(media))
+                                        }
                                 }
                             }
                             .padding(.bottom)

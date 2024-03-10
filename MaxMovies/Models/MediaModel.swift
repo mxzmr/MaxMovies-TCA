@@ -32,6 +32,7 @@ struct MediaItem: Codable, Identifiable, Equatable {
     let originalTitle: String?
     let overview: String?
     let posterPath: String?
+    let backDrop: String?
     let mediaType: String?
     let genreIds: [Int]?
     let popularity: Double?
@@ -65,6 +66,9 @@ struct MediaItem: Codable, Identifiable, Equatable {
         case originalName = "original_name"
         case firstAirDate = "first_air_date"
         case originCountry = "origin_country"
+        case backDrop
     }
+    
+    static let moc = MediaItem(adult: false, backdropPath: "", id: 1, title: "Greatest movie ever", originalLanguage: nil, originalTitle: nil, overview: "some greate movie here about great stuff", posterPath: nil, backDrop: nil, mediaType: "movie", genreIds: nil, popularity: nil, releaseDate: nil, video: nil, voteAverage: nil, voteCount: nil, name: nil, originalName: nil, firstAirDate: nil, originCountry: nil)
 }
 

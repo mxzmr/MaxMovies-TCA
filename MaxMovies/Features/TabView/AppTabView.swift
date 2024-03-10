@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct AppTabView: View {
-    let store: StoreOf<AppFeature>
+    @Bindable var store: StoreOf<AppFeature>
     
     var body: some View {
         TabView {
@@ -27,6 +27,9 @@ struct AppTabView: View {
                     Text("Tv Shows")
                 }
             
+        }
+        .sheet(item: $store.scope(state: \.mediaDetails, action: \.mediaDetails)) { mediaStore in
+            MediaDetailsView(store: mediaStore)
         }
     }
 }

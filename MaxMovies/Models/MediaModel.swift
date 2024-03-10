@@ -8,12 +8,12 @@
 import Foundation
 
 struct MediaResponse: Codable, Equatable {
-
+    
     let page: Int
     var results: [MediaItem]
     let totalPages: Int
     let totalResults: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case page
         case results
@@ -44,8 +44,8 @@ struct MediaItem: Codable, Identifiable, Equatable {
     let originalName: String?
     let firstAirDate: String?
     let originCountry: [String]?
-
-
+    
+    
     enum CodingKeys: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"

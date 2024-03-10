@@ -109,11 +109,22 @@ struct MediaDetailsView: View {
                 }
             }
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarLeading) {
                     Button {
                         store.send(.delegate(.dismiss))
                     } label: {
                         Text("Done")
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        if store.isFavorite {
+                            store.send(.delegate(.remove(store.media)))
+                        } else {
+                            store.send(.delegate(.save(store.media)))
+                        }
+                    } label: {
+                        Image(systemName: store.isFavorite ? "bookmark.fill" : "bookmark")
                             .bold()
                     }
                     
@@ -130,14 +141,12 @@ struct MediaDetailsView: View {
 }
 
 
-
 struct RatingView: View {
     @Binding var rating: Double
     
     var body: some View {
         HStack {
             Picker("picker", selection: $rating) {
-                
                 ForEach(1..<11) { index in
                     Label(String(index), systemImage: index <= Int(rating) ? "star.fill" : "star")
                         .onTapGesture {

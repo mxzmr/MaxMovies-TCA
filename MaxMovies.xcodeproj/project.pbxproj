@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4B558BA2B9DAC1000D0D670 /* URLForMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B558B92B9DAC1000D0D670 /* URLForMediaItem.swift */; };
 		C4C6307A2B9C31ED006EBA56 /* MaxMoviesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630792B9C31ED006EBA56 /* MaxMoviesApp.swift */; };
 		C4C6307E2B9C31EF006EBA56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4C6307D2B9C31EF006EBA56 /* Assets.xcassets */; };
 		C4C630812B9C31EF006EBA56 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4C630802B9C31EF006EBA56 /* Preview Assets.xcassets */; };
@@ -34,9 +35,13 @@
 		C4C630C92B9CFA19006EBA56 /* YoutubeVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630C82B9CFA19006EBA56 /* YoutubeVideoView.swift */; };
 		C4C630CB2B9CFA48006EBA56 /* YoutubeThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630CA2B9CFA48006EBA56 /* YoutubeThumbnailView.swift */; };
 		C4C630CD2B9CFFD2006EBA56 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630CC2B9CFFD2006EBA56 /* Styles.swift */; };
+		C4C630CF2B9D88B4006EBA56 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630CE2B9D88B4006EBA56 /* FavoritesView.swift */; };
+		C4C630D12B9D88C3006EBA56 /* FavoritesFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630D02B9D88C3006EBA56 /* FavoritesFeature.swift */; };
+		C4C630D42B9D890C006EBA56 /* CrudServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C630D32B9D890C006EBA56 /* CrudServices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4B558B92B9DAC1000D0D670 /* URLForMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLForMediaItem.swift; sourceTree = "<group>"; };
 		C4C630762B9C31ED006EBA56 /* MaxMovies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaxMovies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4C630792B9C31ED006EBA56 /* MaxMoviesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaxMoviesApp.swift; sourceTree = "<group>"; };
 		C4C6307D2B9C31EF006EBA56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,6 +69,9 @@
 		C4C630C82B9CFA19006EBA56 /* YoutubeVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideoView.swift; sourceTree = "<group>"; };
 		C4C630CA2B9CFA48006EBA56 /* YoutubeThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeThumbnailView.swift; sourceTree = "<group>"; };
 		C4C630CC2B9CFFD2006EBA56 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		C4C630CE2B9D88B4006EBA56 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		C4C630D02B9D88C3006EBA56 /* FavoritesFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesFeature.swift; sourceTree = "<group>"; };
+		C4C630D32B9D890C006EBA56 /* CrudServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrudServices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C4B558BB2B9DAC2B00D0D670 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C4B558B92B9DAC1000D0D670 /* URLForMediaItem.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		C4C6306D2B9C31ED006EBA56 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +113,7 @@
 		C4C630782B9C31ED006EBA56 /* MaxMovies */ = {
 			isa = PBXGroup;
 			children = (
+				C4B558BB2B9DAC2B00D0D670 /* Utilities */,
 				C4C630792B9C31ED006EBA56 /* MaxMoviesApp.swift */,
 				C4C630972B9C40BB006EBA56 /* Models */,
 				C4C630A22B9C4A56006EBA56 /* Views */,
@@ -122,6 +139,7 @@
 				C4C630AA2B9C5BB5006EBA56 /* Config.plist */,
 				C4C6308A2B9C33ED006EBA56 /* ServiceEndpoints.swift */,
 				C4C6308C2B9C342F006EBA56 /* NetworkService.swift */,
+				C4C630D32B9D890C006EBA56 /* CrudServices.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -144,6 +162,7 @@
 				C4C6309F2B9C49F8006EBA56 /* Movies */,
 				C4C630AD2B9C5E0C006EBA56 /* TvShows */,
 				C4C630B82B9CBFC0006EBA56 /* Home */,
+				C4C630D22B9D88CB006EBA56 /* Favorites */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -205,6 +224,15 @@
 				C4C630C42B9CF979006EBA56 /* MediaDetailsVideoView.swift */,
 			);
 			path = MediaDetails;
+			sourceTree = "<group>";
+		};
+		C4C630D22B9D88CB006EBA56 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				C4C630CE2B9D88B4006EBA56 /* FavoritesView.swift */,
+				C4C630D02B9D88C3006EBA56 /* FavoritesFeature.swift */,
+			);
+			path = Favorites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +314,7 @@
 			files = (
 				C4C6309B2B9C4111006EBA56 /* MoviesView.swift in Sources */,
 				C4C630BF2B9CEF20006EBA56 /* ShowMoreTextView.swift in Sources */,
+				C4B558BA2B9DAC1000D0D670 /* URLForMediaItem.swift in Sources */,
 				C4C630C12B9CEFCD006EBA56 /* ReviewView.swift in Sources */,
 				C4C630A92B9C5797006EBA56 /* TvShowsFeature.swift in Sources */,
 				C4C630BA2B9CD651006EBA56 /* MediaDetailsFeature.swift in Sources */,
@@ -295,6 +324,7 @@
 				C4C630C72B9CF9CE006EBA56 /* VideoResponse.swift in Sources */,
 				C4C630B72B9C979A006EBA56 /* HomeFeature.swift in Sources */,
 				C4C630992B9C40CD006EBA56 /* AppTabView.swift in Sources */,
+				C4C630D12B9D88C3006EBA56 /* FavoritesFeature.swift in Sources */,
 				C4C630C92B9CFA19006EBA56 /* YoutubeVideoView.swift in Sources */,
 				C4C630C32B9CF00C006EBA56 /* ReviewsModel.swift in Sources */,
 				C4C6309D2B9C490C006EBA56 /* PosterTileView.swift in Sources */,
@@ -304,7 +334,9 @@
 				C4C6308D2B9C342F006EBA56 /* NetworkService.swift in Sources */,
 				C4C630C52B9CF979006EBA56 /* MediaDetailsVideoView.swift in Sources */,
 				C4C630B32B9C7415006EBA56 /* MediaModel.swift in Sources */,
+				C4C630CF2B9D88B4006EBA56 /* FavoritesView.swift in Sources */,
 				C4C630A12B9C4A2A006EBA56 /* MoviesFeature.swift in Sources */,
+				C4C630D42B9D890C006EBA56 /* CrudServices.swift in Sources */,
 				C4C630A72B9C5767006EBA56 /* TvShowsView.swift in Sources */,
 				C4C6307A2B9C31ED006EBA56 /* MaxMoviesApp.swift in Sources */,
 			);

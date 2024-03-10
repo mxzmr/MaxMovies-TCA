@@ -22,9 +22,8 @@ struct MediaDetailsVideosView: View {
                                 isLoading = false
                             })
                             if isLoading {
-                                ColorChangingPlaceholderView(width: 200, height: 300, aspectRatio: .fill)
+                                ColorChangingPlaceholderView(width: 400, height: 300, aspectRatio: .fill)
                             }
-                            
                         }
                         .frame(maxWidth: .infinity, minHeight: 300, maxHeight: 500)
                         .onAppear {
@@ -41,8 +40,7 @@ struct MediaDetailsVideosView: View {
                     }
                 } label: {
                     YoutubeThumbnailView(video: video)
-                }
-                
+                }  
             }
         }
         .onDisappear {

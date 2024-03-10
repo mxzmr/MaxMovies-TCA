@@ -22,10 +22,10 @@ struct HomeFeature {
     }
     
     enum Action {
-        case apiCall(ApiCallTerm, URLQueryItem? = nil)
-        case apiResponse(Result<(ApiCallTerm, MediaResponse), Error>)
+        case apiCall(ApiEndpoint, URLQueryItem? = nil)
+        case apiResponse(Result<(ApiEndpoint, MediaResponse), Error>)
         case newSearchTerm(String)
-        case callMultipleApiCalls
+        case initiateMultipleApiRequests
         case resetTextfield
         case showDetails(MediaItem)
     }
@@ -40,6 +40,7 @@ struct HomeFeature {
                         queryItems: [URLQueryItem(name: "page", value: "\(1)"), queryItem ?? URLQueryItem(name: "", value: "")])
                     do {
                         var mediaResponse: MediaResponse = try await networkService.fetch(url: url, headers: TmdbUrl.headers)
+                        //Only include movies and tv shows
                         mediaResponse.results = mediaResponse.results.filter { $0.mediaType != "person" }
                         await send(.apiResponse(.success((apiCallTerm, mediaResponse))))
                     } catch {
@@ -67,13 +68,12 @@ struct HomeFeature {
                 state.isLoading = true
                 state.searchTerm = newSearchTerm
                 if !newSearchTerm.isEmpty {
-                    // Cancel any existing debounce effect to start the timer over
                     return .send(.apiCall(.search, URLQueryItem(name: "query", value: "\(newSearchTerm)")))
-                        .debounce(id: SearchDebounceID(), for: 0.5, scheduler: DispatchQueue.main)
+                        .debounce(id: SearchDebounceID(), for: 0.6, scheduler: DispatchQueue.main)
                         .cancellable(id: SearchDebounceID(), cancelInFlight: true)
                 }
                 return .none
-            case .callMultipleApiCalls:
+            case .initiateMultipleApiRequests:
                 return .merge(
                     Effect<HomeFeature.Action>
                         .send(.apiCall(.trending, nil)),
@@ -92,7 +92,7 @@ struct HomeFeature {
     }
 }
 
-enum ApiCallTerm {
+enum ApiEndpoint {
     case search
     case trending
     case popularMovies

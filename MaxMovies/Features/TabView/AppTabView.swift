@@ -13,20 +13,42 @@ struct AppTabView: View {
     
     var body: some View {
         TabView {
-            HomeView(store: store.scope(state: \.home, action: \.home))
+            HomeView(store: store.scope(state: \.homeFeature, action: \.homeFeature))
                 .tabItem {
-                    Text("Home")
+                    VStack {
+                        Image(systemName: "house")
+                        Text("Home")
+                    }
                 }
             
-            MoviesView(store: store.scope(state: \.movies, action: \.movies))
+            MoviesView(store: store.scope(state: \.moviesFeature, action: \.moviesFeature))
                 .tabItem {
-                    Text("Movies")
+                    VStack {
+                        Image(systemName: "popcorn.fill")
+                        Text("Movies")
+                    }
                 }
-            TvShowsView(store: store.scope(state: \.tvShows, action: \.tvShows))
+            TvShowsView(store: store.scope(state: \.tvShowsFeature, action: \.tvShowsFeature))
                 .tabItem {
-                    Text("Tv Shows")
+                    VStack {
+                        Image(systemName: "tv")
+                        Text("Tv Shows")
+                    }
                 }
             
+            FavoritesView(store: store.scope(state: \.favoritesFeature, action: \.favoritesFeature))
+                .tabItem {
+                    VStack {
+                        Image(systemName: "bookmark.fill")
+                        Text("Favorites")
+                    }
+                }
+            
+            
+            
+        }
+        .onAppear {
+            store.send(.loadFavorites)
         }
         .sheet(item: $store.scope(state: \.mediaDetails, action: \.mediaDetails)) { mediaStore in
             MediaDetailsView(store: mediaStore)

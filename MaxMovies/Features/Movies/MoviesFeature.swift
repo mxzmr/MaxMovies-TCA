@@ -27,7 +27,6 @@ struct MoviesFeature {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-                
             case .apiCall(let category):
                 state.isLoading = true
                 state.sortedCategory = category

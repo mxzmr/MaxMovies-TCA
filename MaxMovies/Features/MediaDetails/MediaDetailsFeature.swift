@@ -17,6 +17,7 @@ struct MediaDetailsFeature {
         var media: MediaItem
         var reviews: ReviewsResponse = ReviewsResponse(id: 1, page: 1, results: [], totalPages: 1)
         var trailers: VideoResponse = VideoResponse(id: 1, results: [])
+        var isFavorite: Bool = false
     }
     
     enum Action {
@@ -28,6 +29,8 @@ struct MediaDetailsFeature {
         
         enum Delegate {
             case dismiss
+            case save(MediaItem)
+            case remove(MediaItem)
         }
     }
     
@@ -75,6 +78,9 @@ struct MediaDetailsFeature {
                 case .failure(let error):
                     print("Error fetching trailers: \(error)")
                 }
+                return .none
+            case .delegate(.save(_)), .delegate(.remove(_)):
+                state.isFavorite.toggle()
                 return .none
             case .delegate(_):
                 return .none

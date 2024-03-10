@@ -68,11 +68,7 @@ enum TmdbUrl {
     
     static var headers: [String: String] {
         var headers: [String: String] = ["accept": "application/json"]
-        
-        if let apiKey = getAPIKey() {
-            headers["Authorization"] = "Bearer \(apiKey)"
-        }
-        
+        headers["Authorization"] = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwMmJhNzYxZjg3Zjg1MDc2MzE1YjEwZGQyYmQxNDA1OSIsInN1YiI6IjY0ZDEwOWQ2NmQ0Yzk3MDBhZmFlYmUzZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IPAQAYwvYVt5gOMYePzgpc4iUeQaNJABshMmrY_-848"
         return headers
     }
     
@@ -125,18 +121,3 @@ enum TvShowCategory: String, CaseIterable {
     }
 }
 
-func getAPIKey() -> String? {
-    var apiKey: String?
-    
-    if let path = Bundle.main.path(forResource: "Config", ofType: "plist"),
-       let xml = FileManager.default.contents(atPath: path) {
-        do {
-            if let plistData = try PropertyListSerialization.propertyList(from: xml, options: .mutableContainersAndLeaves, format: nil) as? [String: Any] {
-                apiKey = plistData["Authorization"] as? String
-            }
-        } catch {
-            print("Error reading plist: \(error)")
-        }
-    }
-    return apiKey
-}
